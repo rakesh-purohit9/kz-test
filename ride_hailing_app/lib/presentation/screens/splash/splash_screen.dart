@@ -48,8 +48,12 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
   }
 
   Future<void> _initializeApp() async {
-    // Initialize location
-    await ref.read(locationProvider.notifier).initialize();
+    try {
+      // Initialize location
+      await ref.read(locationProvider.notifier).initialize();
+    } catch (e) {
+      // Ignore errors - continue to login
+    }
 
     // Short delay for splash animation
     await Future.delayed(const Duration(milliseconds: 1200));
@@ -71,46 +75,40 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
     return Scaffold(
       backgroundColor: AppColors.background,
       body: Center(
-        child: AnimatedBuilder(
-          animation: _animationController,
-          builder: (context, child) {
-            return FadeTransition(
-              opacity: _fadeAnimation,
-              child: ScaleTransition(
-                scale: _scaleAnimation,
-                child: child,
-              ),
-            );
-          },
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // App Logo
-              Container(
-                width: 80,
-                height: 80,
-                decoration: BoxDecoration(
-                  color: AppColors.primary,
-                  borderRadius: BorderRadius.circular(AppDimensions.radiusMd),
-                ),
-                child: const Center(
-                  child: Icon(
-                    Icons.directions_car,
-                    color: AppColors.textOnPrimary,
-                    size: 40,
+        child: FadeTransition(
+          opacity: _fadeAnimation,
+          child: ScaleTransition(
+            scale: _scaleAnimation,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // App Logo
+                Container(
+                  width: 80,
+                  height: 80,
+                  decoration: BoxDecoration(
+                    color: AppColors.primary,
+                    borderRadius: BorderRadius.circular(AppDimensions.radiusMd),
+                  ),
+                  child: const Center(
+                    child: Icon(
+                      Icons.directions_car,
+                      color: AppColors.textOnPrimary,
+                      size: 40,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: AppSpacing.lg),
-              // App Name
-              Text(
-                AppStrings.appName,
-                style: AppTypography.displayMedium.copyWith(
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: -1,
+                const SizedBox(height: AppSpacing.lg),
+                // App Name
+                Text(
+                  AppStrings.appName,
+                  style: AppTypography.displayMedium.copyWith(
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: -1,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
