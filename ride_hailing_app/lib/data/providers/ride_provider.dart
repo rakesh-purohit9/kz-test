@@ -216,11 +216,7 @@ class RideNotifier extends StateNotifier<RideState> {
   void _startEtaCountdown(int initialEta) {
     var eta = initialEta;
 
-    _etaTimer = Timer.periodic(const Duration(seconds: 10), (timer) {
-      if (!mounted) {
-        timer.cancel();
-        return;
-      }
+    _etaTimer = Timer.periodic(const Duration(seconds: 3), (timer) {
 
       eta--;
 
@@ -258,19 +254,13 @@ class RideNotifier extends StateNotifier<RideState> {
   }
 
   void _startTripProgress() {
-    final duration = state.currentRide?.estimatedDurationMinutes ?? 10;
     var elapsed = 0;
 
-    _tripTimer = Timer.periodic(const Duration(seconds: 5), (timer) {
-      if (!mounted) {
-        timer.cancel();
-        return;
-      }
-
+    _tripTimer = Timer.periodic(const Duration(seconds: 2), (timer) {
       elapsed++;
 
-      // Complete trip after estimated duration (scaled for demo)
-      if (elapsed >= (duration / 2)) {
+      // Complete trip after 5 ticks for demo (10 seconds)
+      if (elapsed >= 5) {
         timer.cancel();
         _completeTrip();
       }

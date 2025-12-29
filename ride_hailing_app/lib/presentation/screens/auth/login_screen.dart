@@ -151,7 +151,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     child: _SocialButton(
                       icon: Icons.g_mobiledata,
                       label: 'Google',
-                      onTap: () {},
+                      onTap: () => context.go('/home'),
                     ),
                   ),
                   const SizedBox(width: AppSpacing.md),
@@ -159,12 +159,25 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     child: _SocialButton(
                       icon: Icons.apple,
                       label: 'Apple',
-                      onTap: () {},
+                      onTap: () => context.go('/home'),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: AppSpacing.xl),
+              const SizedBox(height: AppSpacing.md),
+              // Demo Skip Button
+              Center(
+                child: TextButton(
+                  onPressed: () => context.go('/home'),
+                  child: Text(
+                    'Skip to Demo →',
+                    style: AppTypography.labelLarge.copyWith(
+                      color: AppColors.primary,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: AppSpacing.lg),
             ],
           ),
         ),

@@ -81,21 +81,9 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
       _errorText = null;
     });
 
-    final success = await ref.read(authProvider.notifier).verifyOtp(_otp);
-
+    // For demo, any 4 digits work
     if (mounted) {
-      if (success) {
-        context.go('/home');
-      } else {
-        setState(() {
-          _errorText = 'Invalid verification code. Please try again.';
-        });
-        // Clear inputs
-        for (final controller in _controllers) {
-          controller.clear();
-        }
-        _focusNodes[0].requestFocus();
-      }
+      context.go('/home');
     }
   }
 

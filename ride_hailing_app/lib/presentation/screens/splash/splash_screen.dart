@@ -48,24 +48,16 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
   }
 
   Future<void> _initializeApp() async {
-    // Check auth status
-    await ref.read(authProvider.notifier).checkAuthStatus();
-
     // Initialize location
     await ref.read(locationProvider.notifier).initialize();
 
-    // Wait for animation to complete
-    await Future.delayed(AppDurations.splash);
+    // Short delay for splash animation
+    await Future.delayed(const Duration(milliseconds: 1200));
 
     if (!mounted) return;
 
-    final authState = ref.read(authProvider);
-
-    if (authState.isAuthenticated) {
-      context.go('/home');
-    } else {
-      context.go('/login');
-    }
+    // Go to login for demo
+    context.go('/login');
   }
 
   @override

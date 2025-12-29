@@ -12,69 +12,21 @@ dependencies:
 
   # State Management
   flutter_riverpod: ^2.4.9
-  riverpod_annotation: ^2.3.3
 
   # Navigation
   go_router: ^13.0.1
 
-  # Maps & Location
-  google_maps_flutter: ^2.5.3
-  geolocator: ^10.1.0
-  geocoding: ^2.1.1
-  google_places_flutter: ^2.0.8
-  flutter_polyline_points: ^2.0.0
-
   # UI Components
-  flutter_svg: ^2.0.9
   cached_network_image: ^3.3.1
-  shimmer: ^3.0.0
-  flutter_rating_bar: ^4.0.1
-
-  # Animations
-  lottie: ^3.0.0
-  flutter_animate: ^4.3.0
-
-  # Forms & Validation
-  flutter_libphonenumber: ^2.3.0
-  pin_code_fields: ^8.0.1
-
-  # Storage
-  shared_preferences: ^2.2.2
-  flutter_secure_storage: ^9.0.0
-
-  # Networking
-  dio: ^5.4.0
 
   # Utils
   intl: ^0.19.0
-  uuid: ^4.2.2
-  collection: ^1.18.0
   equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.1
-  riverpod_generator: ^2.3.9
-  build_runner: ^2.4.8
 
 flutter:
   uses-material-design: true
-
-  # Uncomment and add assets when available:
-  # assets:
-  #   - assets/images/
-  #   - assets/icons/
-
-  # Uses system fonts by default (SF Pro on iOS, Roboto on Android)
-  # Uncomment to use custom fonts:
-  # fonts:
-  #   - family: SFPro
-  #     fonts:
-  #       - asset: assets/fonts/SF-Pro-Display-Regular.otf
-  #       - asset: assets/fonts/SF-Pro-Display-Medium.otf
-  #         weight: 500
-  #       - asset: assets/fonts/SF-Pro-Display-Semibold.otf
-  #         weight: 600
-  #       - asset: assets/fonts/SF-Pro-Display-Bold.otf
-  #         weight: 700
